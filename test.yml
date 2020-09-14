@@ -1,0 +1,25 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: mypod
+  labels:
+    team: teamdagpenger
+spec:
+  image: redis
+  envFrom:
+    - secret: credential-slack
+    - configmap: kafka-bootstrap-servers
+  gcp:    
+    sqlInstances:
+      - name: dp-test-2
+        type: POSTGRES_11
+        tier: db-custom-1-3840
+        diskType: SSD
+        highAvailability: true
+        diskSize: 10
+        diskAutoresize: true
+        autoBackupTime: "03:00"
+        databases:
+          - name: dp-test
+            envVarPrefix: DATABASE
+        cascadingDelete: false
