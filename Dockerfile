@@ -5,6 +5,9 @@ RUN apt-get update && apt-get install -y \
   postgresql-contrib \ 
   wget
 
+RUN wget https://github.com/mikefarah/yq/releases/download/3.4.0/yq_linux_amd64 -O /usr/local/bin/yq
+RUN chmod 755 /usr/local/bin/yq
+
 RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 RUN chmod 755 /usr/local/bin/cloud_sql_proxy
 
