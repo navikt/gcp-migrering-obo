@@ -16,7 +16,7 @@ metadata:
   name: gcloud
 spec:
   containers:
-  - image: navikt/gcloud-psql:9
+  - image: navikt/gcloud-psql:12
     imagePullPolicy: IfNotPresent
     name: gcloud
     volumeMounts:
