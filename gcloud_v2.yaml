@@ -17,7 +17,7 @@ metadata:
 spec:
   containers:
   - image: navikt/gcloud-psql:12
-    imagePullPolicy: IfNotPresent
+    imagePullPolicy: Always
     name: gcloud
     volumeMounts:
     - mountPath: /etc/ssl/ca-bundle.pem
