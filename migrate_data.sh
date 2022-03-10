@@ -1,7 +1,7 @@
 #!/bin/bash
 usage() {
 echo "---"
-echo "$0 <hostname where database resides> <database name> <database user> <database password> <gcp project> <gcp bucket> <gcp sql instance> <gcp db user> <service account email> <pg dump flags>"
+echo "$0 <hostname where database resides> <database name> <database user> <database password> <gcp project> <gcp bucket> <gcp sql instance> <gcp database> <gcp db user> <service account email> <pg dump flags>"
 }
 
 if [ "$#" -lt 9 ]; then
@@ -16,9 +16,10 @@ export PGPASSWORD=$4
 GCP_PROJECT=$5
 GCP_BUCKET=$6
 GCP_INSTANCE=$7
-GCP_DB_USER=$8
-GCP_SA_EMAIL=$9
-PG_DUMP_FLAGS=$10
+GCP_DATABASE=$8
+GCP_DB_USER=$9
+GCP_SA_EMAIL=$10
+PG_DUMP_FLAGS=$11
 
 
 
@@ -39,6 +40,6 @@ gsutil -m -o GSUtil:parallel_composite_upload_threshold=150M cp /data/${DB_NAME}
 
 # import database in gcp
 gcloud sql import sql ${GCP_INSTANCE} gs://${GCP_BUCKET}/${DB_NAME}.dmp.gz \
-  --database=${DB_NAME} \
+  --database=${GCP_DATABASE} \
   --user=${GCP_DB_USER} \
   --quiet
