@@ -31,7 +31,7 @@ pg_dump -h ${DB_HOST} -d ${DB_NAME} -U ${DB_USER} --format=plain --no-owner --no
 gcloud config set project ${GCP_PROJECT}
 gcloud auth activate-service-account --key-file /var/run/secrets/nais.io/migration-user/user
 
-gsutil mb gs://"${GCP_BUCKET}" -l EUROPE-NORTH1
+gsutil mb -l EUROPE-NORTH1 gs://"${GCP_BUCKET}"
 gsutil iam ch serviceAccount:"${GCP_SA_EMAIL}":objectAdmin gs://"${GCP_BUCKET}"
 
 service_account_email=$(gcloud sql instances describe ${GCP_INSTANCE} | yq '.serviceAccountEmailAddress')
