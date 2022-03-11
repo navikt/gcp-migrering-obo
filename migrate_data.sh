@@ -24,7 +24,7 @@ PG_DUMP_FLAGS=$11
 
 
 # dump database
-pg_dump -h ${DB_HOST} -d ${DB_NAME} -U ${DB_USER} --format=plain --no-owner --no-acl -Z9 ${PG_DUMP_FLAGS} -v \
+pg_dump -h ${DB_HOST} -d ${DB_NAME} -U ${DB_USER} --format=plain --no-owner --no-acl ${PG_DUMP_FLAGS} -v \
 	> /data/${DB_NAME}.dmp.gz
 
 # move database dump to bucket
