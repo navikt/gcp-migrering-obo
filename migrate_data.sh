@@ -30,12 +30,13 @@ pg_dump -h ${DB_HOST} -d ${DB_NAME} -U ${DB_USER} --format=plain --no-owner --no
 # move database dump to bucket
 gcloud config set project ${GCP_PROJECT}
 gcloud auth activate-service-account --key-file /var/run/secrets/nais.io/migration-user/user
-gsutil iam ch serviceAccount:"${GCP_SA_EMAIL}":objectCreator gs://"${GCP_BUCKET}"
+
+gsutil mb gs://"${GCP_BUCKET}" -l EUROPE-NORTH1
+gsutil iam ch serviceAccount:"${GCP_SA_EMAIL}":objectAdmin gs://"${GCP_BUCKET}"
 
 service_account_email=$(gcloud sql instances describe ${GCP_INSTANCE} | yq '.serviceAccountEmailAddress')
 gsutil iam ch serviceAccount:"${service_account_email}":objectViewer gs://"${GCP_BUCKET}"
 
-gsutil mb gs://"${GCP_BUCKET}" -l EUROPE-NORTH1
 gsutil -m -o GSUtil:parallel_composite_upload_threshold=150M cp /data/${DB_NAME}.dmp.gz gs://"${GCP_BUCKET}"/
 
 # import database in gcp
