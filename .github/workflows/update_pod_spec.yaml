@@ -1,5 +1,9 @@
 name: Update gcloud.yaml
-on: push
+on:
+  push:
+    paths:
+      - Dockerfile
+      - '.github/workflows/update_pod_spec.yaml'
 
 jobs:
   update:
