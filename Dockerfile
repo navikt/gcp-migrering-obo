@@ -1,9 +1,15 @@
 FROM google/cloud-sdk:398.0.0-slim
 
+
+
+RUN apt-get update && apt-get install -y wget
+
+RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
+RUN apt -y update
 RUN apt-get update && apt-get install -y \
-  postgresql-client \
-  postgresql-contrib \ 
-  wget
+    postgresql-client-14 \
+    postgresql-contrib-14
 
 RUN wget https://github.com/mikefarah/yq/releases/download/v4.27.2/yq_linux_amd64 -O /usr/local/bin/yq
 RUN chmod 755 /usr/local/bin/yq
