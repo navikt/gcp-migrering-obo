@@ -28,7 +28,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - run: docker push $IMAGE
 
-      - run: sed -i -e "s|gcloud-psql:.*|$IMAGE|" gcloud.yaml
+      - run: sed -i -e "s|ghcr.io.*|$IMAGE|" gcloud.yaml
       - name: Commit to repo
         run: |
           git config --global user.name "$GITHUB_ACTOR"

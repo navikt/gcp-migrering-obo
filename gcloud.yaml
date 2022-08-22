@@ -4,7 +4,7 @@ metadata:
   name: gcloud
 spec:
   containers:
-  - image: navikt/$IMAGE
+  - image: ghcr.io/navikt/gcloud-psql:2022-08-22-3760f64
     imagePullPolicy: IfNotPresent
     imagePullSecrets:
     - name: gh-docker-credentials
