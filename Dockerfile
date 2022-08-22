@@ -16,8 +16,6 @@ RUN chmod 755 /usr/local/bin/yq
 RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 RUN chmod 755 /usr/local/bin/cloud_sql_proxy
 
-COPY migrate_data.sh /tmp/
-
 ENV CLOUDSDK_PROXY_TYPE http
 ENV CLOUDSDK_PROXY_ADDRESS webproxy.nais
 ENV CLOUDSDK_PROXY_PORT 8088
