@@ -15,7 +15,7 @@ jobs:
           ref: ${{ github.head_ref }}
           token: ${{ steps.get-token.outputs.token }}
 
-      - run: echo "IMAGE=ghcr.io/gcloud-psql:$(git log -1 --pretty=%ad --date=format:%Y-%m-%d)-$(git log --pretty=format:'%h' -n 1)" >> $GITHUB_ENV
+      - run: echo "IMAGE=ghcr.io/navikt/gcloud-psql:$(git log -1 --pretty=%ad --date=format:%Y-%m-%d)-$(git log --pretty=format:'%h' -n 1)" >> $GITHUB_ENV
       - run: docker build -t $IMAGE .
       - uses: docker/login-action@v1
         with:
