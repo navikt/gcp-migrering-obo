@@ -6,6 +6,8 @@ spec:
   containers:
   - image: navikt/$IMAGE
     imagePullPolicy: IfNotPresent
+    imagePullSecrets:
+    - name: gh-docker-credentials
     name: gcloud
     volumeMounts:
     - mountPath: /etc/ssl/ca-bundle.pem
