@@ -6,8 +6,6 @@ spec:
   containers:
   - image: ghcr.io/navikt/gcloud-psql:2022-08-22-7d545d5
     imagePullPolicy: IfNotPresent
-    imagePullSecrets:
-    - name: gh-docker-credentials
     name: gcloud
     volumeMounts:
     - mountPath: /etc/ssl/ca-bundle.pem
@@ -19,4 +17,5 @@ spec:
       defaultMode: 420
       name: ca-bundle-pem
     name: ca-bundle-pem
-
+  imagePullSecrets:
+  - name: gh-docker-credentials
