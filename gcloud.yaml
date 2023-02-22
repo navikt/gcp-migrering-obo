@@ -4,7 +4,7 @@ metadata:
   name: gcloud
 spec:
   containers:
-  - image: navikt/gcloud-psql:12
+  - image: navikt/gcloud-psql:13
     imagePullPolicy: Always
     name: gcloud
     securityContext:

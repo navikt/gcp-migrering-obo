@@ -1,4 +1,4 @@
-FROM google/cloud-sdk:398.0.0-slim
+FROM google/cloud-sdk:slim
 
 RUN apt-get update && apt-get install -y wget
 
