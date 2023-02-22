@@ -16,10 +16,14 @@ RUN chmod 755 /usr/local/bin/yq
 RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy
 RUN chmod 755 /usr/local/bin/cloud_sql_proxy
 
+RUN mkdir /db && chown 65532 /db
+WORKDIR /db
+
 ENV CLOUDSDK_PROXY_TYPE http
 ENV CLOUDSDK_PROXY_ADDRESS webproxy.nais
 ENV CLOUDSDK_PROXY_PORT 8088
 #From NAIS
 ENV CLOUDSDK_CORE_CUSTOM_CA_CERTS_FILE /etc/ssl/ca-bundle.pem 
+ENV HOME=/db
 
 CMD ["sh", "-c", "tail -f /dev/null"]

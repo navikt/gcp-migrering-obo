@@ -4,7 +4,7 @@ metadata:
   name: gcloud
 spec:
   containers:
-  - image: navikt/gcloud-psql:13
+  - image: navikt/gcloud-psql:14
     imagePullPolicy: Always
     name: gcloud
     securityContext:
@@ -12,7 +12,7 @@ spec:
       capabilities:
         drop:
         - ALL
-      readOnlyRootFilesystem: true
+      readOnlyRootFilesystem: false
       runAsNonRoot: true
       runAsUser: 65532
       seccompProfile:
