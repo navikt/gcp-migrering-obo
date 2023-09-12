@@ -6,7 +6,7 @@ on:
     paths:
       - 'Dockerfile'
 env:
-  NAME: gcloud-psql
+  NAME: gcp-migrering
 
 jobs:
   build_and_push:
