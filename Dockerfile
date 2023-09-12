@@ -7,8 +7,8 @@ RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 
 RUN apt-get -y update && apt-get install -y \
-    postgresql-client-14 \
-    postgresql-contrib-14
+    postgresql-client-15 \
+    postgresql-contrib-15
 
 RUN wget https://github.com/mikefarah/yq/releases/download/v4.27.2/yq_linux_amd64 -O /usr/local/bin/yq
 RUN chmod 755 /usr/local/bin/yq
