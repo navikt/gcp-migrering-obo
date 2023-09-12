@@ -4,7 +4,7 @@ metadata:
   name: gcloud
 spec:
   containers:
-  - image: navikt/gcloud-psql:15
+  - image: europe-north1-docker.pkg.dev/nais-io/nais/images/gcloud-psql:2023-09-12-223736-07ec63e
     imagePullPolicy: Always
     name: gcloud
     securityContext:
